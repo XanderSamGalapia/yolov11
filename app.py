@@ -1,12 +1,11 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-import torch  # or your ML framework
-
+from ultralytics import YOLO
 # 🔧 Load your model here
 @st.cache_resource
 def load_model():
-    model = torch.load('trained_yolo11l_model20.pt', map_location='cpu')  # Update path as needed
+    model = YOLO('trained_yolo11l_model20.pt', map_location='cpu')  # Update path as needed
     model.eval()
     return model
 
